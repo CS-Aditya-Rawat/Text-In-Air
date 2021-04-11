@@ -5,12 +5,6 @@ import HandTrakingModule as htm
 import time
 from collections import deque
 
-
-# default called trackbar function
-def setValues(x):
-    print("")
-
-
 # Giving different arrays to handle colour points of different colour
 bpoints = [deque(maxlen=1024)]
 gpoints = [deque(maxlen=1024)]
@@ -23,8 +17,6 @@ green_index = 0
 red_index = 0
 yellow_index = 0
 
-# The kernel to be used for dilation purpose
-kernel = np.ones((5, 5), np.uint8)
 
 colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255)]
 colorIndex = 0
@@ -64,7 +56,7 @@ while True:
     img = cv2.flip(img, 1)
     img = detector.findHands(img, draw=False)
     lmList = detector.findPosition(img, draw=False)
-    print(lmList)
+    # print(lmList)
     cTime = time.time()
     fps = 1/(cTime-pTime)
     pTime = cTime
